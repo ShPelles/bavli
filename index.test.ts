@@ -28,3 +28,41 @@ describe('pageIndex property', () => {
     expect(bavli.pageIndex).toBe(2710);
   });
 });
+
+describe('masekhet property', () => {
+  test('should works 1', () => {
+    // Arrange
+    const bavli = new Bavli(0);
+    // Act
+    const actual = bavli.masekhet;
+    // Assert
+    expect(actual).toBe(0);
+  });
+
+  test('should works 2', () => {
+    // Arrange
+    const bavli = new Bavli(100);
+    // Act
+    const actual = bavli.masekhet;
+    // Assert
+    expect(actual).toBe(1);
+  });
+
+  test('should works 3', () => {
+    // Arrange
+    const bavli = new Bavli(300);
+    // Act
+    const actual = bavli.masekhet;
+    // Assert
+    expect(actual).toBe(2);
+  });
+
+  test('should works 4', () => {
+    // Arrange
+    const bavli = new Bavli(-1);
+    // Act
+    const actual = bavli.masekhet;
+    // Assert
+    expect(actual).toBe(39);
+  });
+});
