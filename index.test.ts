@@ -86,3 +86,41 @@ describe('masekhet property', () => {
     expect(actual).toBe(39);
   });
 });
+
+describe('pageIndex property', () => {
+  test('should works 1', () => {
+    // Arrange
+    const bavli = new Bavli(0);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(0);
+  });
+
+  test('should works 2', () => {
+    // Arrange
+    const bavli = new Bavli(62);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(62);
+  });
+
+  test('should works 3', () => {
+    // Arrange
+    const bavli = new Bavli(63);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(0);
+  });
+
+  test('should works 4', () => {
+    // Arrange
+    const bavli = new Bavli(-1);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(71);
+  });
+});

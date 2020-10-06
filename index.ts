@@ -19,12 +19,23 @@ export class Bavli {
     let masekhet = 0;
     let counter = 0;
 
-    while (counter <= this.globalIndex) {
+    do {
       counter += this.lengths[masekhet];
       masekhet += 1;
-    }
+    } while (counter < this.globalIndex);
 
     return masekhet - 1;
+  }
+
+  get pageIndex(): number {
+    let masekhet = 0;
+    let pagesLeft = this.globalIndex;
+
+    do {
+      if (pagesLeft < this.lengths[masekhet]) { return pagesLeft; }
+      pagesLeft -= this.lengths[masekhet];
+      masekhet += 1;
+    } while (true); // eslint-disable-line no-constant-condition
   }
 
   // eslint-disable-next-line max-len
