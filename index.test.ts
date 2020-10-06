@@ -15,4 +15,9 @@ describe('new (index)', () => {
     const bavli = new Bavli(-2);
     expect(bavli.pageIndex).toBe(2709);
   });
+
+  test('should works with large numbers', () => {
+    const bavli = new Bavli(27110042);
+    expect(bavli.pageIndex).toBe(42);
+  });
 });
