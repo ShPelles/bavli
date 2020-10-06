@@ -10,7 +10,9 @@ describe('new (index)', () => {
     const bavli = new Bavli(42);
     expect(bavli.pageIndex).toBe(42);
   });
+});
 
+describe('pageIndex property', () => {
   test('should works with negative numbers', () => {
     const bavli = new Bavli(-2);
     expect(bavli.pageIndex).toBe(2709);
@@ -19,5 +21,10 @@ describe('new (index)', () => {
   test('should works with large numbers', () => {
     const bavli = new Bavli(27110042);
     expect(bavli.pageIndex).toBe(42);
+  });
+
+  test('should works with large negative numbers', () => {
+    const bavli = new Bavli(-2711001);
+    expect(bavli.pageIndex).toBe(2710);
   });
 });

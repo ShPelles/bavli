@@ -14,6 +14,7 @@ module.exports = {
     'airbnb-typescript/base',
   ],
   rules: {
+    'no-underscore-dangle': ['error', { allowAfterThis: true }],
     'import/prefer-default-export': [0],
   },
 };
