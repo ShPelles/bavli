@@ -1,25 +1,25 @@
 export class Bavli {
-  constructor(pageIndex: number = 0) {
-    this.pageIndex = pageIndex;
+  constructor(globalIndex: number = 0) {
+    this.globalIndex = globalIndex;
   }
 
-  private _pageIndex: number = 0;
+  private _globalIndex: number = 0;
 
-  set pageIndex(value: number) {
+  set globalIndex(value: number) {
     let result = value % this.length;
     if (result < 0) { result += this.length; }
-    this._pageIndex = result;
+    this._globalIndex = result;
   }
 
-  get pageIndex(): number {
-    return this._pageIndex;
+  get globalIndex(): number {
+    return this._globalIndex;
   }
 
   get masekhet(): number {
     let masekhet = 0;
     let counter = 0;
 
-    while (counter <= this.pageIndex) {
+    while (counter <= this.globalIndex) {
       counter += this.lengths[masekhet];
       masekhet += 1;
     }

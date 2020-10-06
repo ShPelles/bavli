@@ -14,18 +14,18 @@ describe('new (index)', () => {
     // Arrange
     const bavli = new Bavli(42);
     // Act
-    const actual = bavli.pageIndex;
+    const actual = bavli.globalIndex;
     // Assert
     expect(actual).toBe(42);
   });
 });
 
-describe('pageIndex property', () => {
+describe('globalIndex property', () => {
   test('should works with negative numbers', () => {
     // Arrange
     const bavli = new Bavli(-2);
     // Act
-    const actual = bavli.pageIndex;
+    const actual = bavli.globalIndex;
     // Assert
     expect(actual).toBe(2709);
   });
@@ -34,7 +34,7 @@ describe('pageIndex property', () => {
     // Arrange
     const bavli = new Bavli(27110042);
     // Act
-    const actual = bavli.pageIndex;
+    const actual = bavli.globalIndex;
     // Assert
     expect(actual).toBe(42);
   });
@@ -43,7 +43,7 @@ describe('pageIndex property', () => {
     // Arrange
     const bavli = new Bavli(-2711001);
     // Act
-    const actual = bavli.pageIndex;
+    const actual = bavli.globalIndex;
     // Assert
     expect(actual).toBe(2710);
   });
