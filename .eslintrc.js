@@ -13,4 +13,7 @@ module.exports = {
     // "plugin:@typescript-eslint/recommended-requiring-type-checking",
     'airbnb-typescript/base',
   ],
+  rules: {
+    'import/prefer-default-export': [0],
+  },
 };

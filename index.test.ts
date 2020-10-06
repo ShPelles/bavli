@@ -1,5 +1,6 @@
-import Bavli from '.';
+import { Bavli } from '.';
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(Bavli).toBe(2711);
+test('should length equal 2711', () => {
+  const bavli = new Bavli();
+  expect(bavli.length).toBe(2711);
 });

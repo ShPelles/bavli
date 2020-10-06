@@ -1,3 +1,3 @@
-const Bavli = 2711;
-
-export default Bavli;
+export class Bavli {
+  length = 2711;
+}
