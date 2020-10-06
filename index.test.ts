@@ -1,31 +1,51 @@
 import { Bavli } from '.';
 
 test('should length equal 2711', () => {
+  // Arrange
   const bavli = new Bavli();
-  expect(bavli.length).toBe(2711);
+  // Act
+  const actual = bavli.length;
+  // Assert
+  expect(actual).toBe(2711);
 });
 
 describe('new (index)', () => {
   test('should set the current index', () => {
+    // Arrange
     const bavli = new Bavli(42);
-    expect(bavli.pageIndex).toBe(42);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(42);
   });
 });
 
 describe('pageIndex property', () => {
   test('should works with negative numbers', () => {
+    // Arrange
     const bavli = new Bavli(-2);
-    expect(bavli.pageIndex).toBe(2709);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(2709);
   });
 
   test('should works with large numbers', () => {
+    // Arrange
     const bavli = new Bavli(27110042);
-    expect(bavli.pageIndex).toBe(42);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(42);
   });
 
   test('should works with large negative numbers', () => {
+    // Arrange
     const bavli = new Bavli(-2711001);
-    expect(bavli.pageIndex).toBe(2710);
+    // Act
+    const actual = bavli.pageIndex;
+    // Assert
+    expect(actual).toBe(2710);
   });
 });
 
