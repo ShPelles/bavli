@@ -15,32 +15,29 @@ export class Bavli {
     return this._globalIndex;
   }
 
-  get masekhet(): number {
-    let masekhet = 0;
-    let counter = 0;
-
-    do {
-      counter += this.lengths[masekhet];
-      masekhet += 1;
-    } while (counter < this.globalIndex + 1);
-
-    return masekhet - 1;
-  }
-
-  get pageIndex(): number {
+  private get page(): { masekhet: number, pageIndex: number } {
     let masekhet = 0;
     let pagesLeft = this.globalIndex;
 
     do {
-      if (pagesLeft < this.lengths[masekhet]) { return pagesLeft; }
+      if (pagesLeft < this.lengths[masekhet]) { return { masekhet, pageIndex: pagesLeft }; }
       pagesLeft -= this.lengths[masekhet];
       masekhet += 1;
     } while (true); // eslint-disable-line no-constant-condition
   }
 
+  get masekhet(): number {
+    return this.page.masekhet;
+  }
+
+  get pageIndex(): number {
+    return this.page.pageIndex;
+  }
+
   get pageNumber(): number {
-    const start = this.starts[this.masekhet];
-    return this.pageIndex + start;
+    const { masekhet, pageIndex } = this.page;
+    const start = this.starts[masekhet];
+    return pageIndex + start;
   }
 
   /* eslint-disable max-len */
