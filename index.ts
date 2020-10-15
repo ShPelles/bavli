@@ -22,7 +22,7 @@ export class Bavli {
     do {
       counter += this.lengths[masekhet];
       masekhet += 1;
-    } while (counter < this.globalIndex);
+    } while (counter < this.globalIndex + 1);
 
     return masekhet - 1;
   }

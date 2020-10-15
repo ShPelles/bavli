@@ -59,6 +59,24 @@ describe('masekhet property', () => {
     expect(actual).toBe(0);
   });
 
+  test('should works 1.333', () => {
+    // Arrange
+    const bavli = new Bavli(62);
+    // Act
+    const actual = bavli.masekhet;
+    // Assert
+    expect(actual).toBe(0);
+  });
+
+  test('should works 1.666', () => {
+    // Arrange
+    const bavli = new Bavli(63);
+    // Act
+    const actual = bavli.masekhet;
+    // Assert
+    expect(actual).toBe(1);
+  });
+
   test('should works 2', () => {
     // Arrange
     const bavli = new Bavli(100);
