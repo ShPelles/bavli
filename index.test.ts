@@ -142,3 +142,59 @@ describe('pageIndex property', () => {
     expect(actual).toBe(71);
   });
 });
+
+describe('pageNumber property', () => {
+  test('should works 1', () => {
+    // Arrange
+    const bavli = new Bavli(0);
+    // Act
+    const actual = bavli.pageNumber;
+    // Assert
+    expect(actual).toBe(2);
+  });
+
+  test('should works 2', () => {
+    // Arrange
+    const bavli = new Bavli(62);
+    // Act
+    const actual = bavli.pageNumber;
+    // Assert
+    expect(actual).toBe(64);
+  });
+
+  test('should works 3', () => {
+    // Arrange
+    const bavli = new Bavli(63);
+    // Act
+    const actual = bavli.pageNumber;
+    // Assert
+    expect(actual).toBe(2);
+  });
+
+  test('should works 4', () => {
+    // Arrange
+    const bavli = new Bavli(-1);
+    // Act
+    const actual = bavli.pageNumber;
+    // Assert
+    expect(actual).toBe(73);
+  });
+
+  test('should works 5', () => {
+    // Arrange
+    const bavli = new Bavli(2638);
+    // Act
+    const actual = bavli.pageNumber;
+    // Assert
+    expect(actual).toBe(36);
+  });
+
+  test('should works 6', () => {
+    // Arrange
+    const bavli = new Bavli(2639);
+    // Act
+    const actual = bavli.pageNumber;
+    // Assert
+    expect(actual).toBe(2);
+  });
+});
