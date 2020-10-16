@@ -9,192 +9,75 @@ test('should length equal 2711', () => {
   expect(actual).toBe(2711);
 });
 
-describe('new (index)', () => {
-  test('should set the current index', () => {
-    // Arrange
-    const bavli = new Bavli(42);
-    // Act
-    const actual = bavli.globalIndex;
-    // Assert
-    expect(actual).toBe(42);
-  });
-});
-
 describe('globalIndex property', () => {
-  test('should works with negative numbers', () => {
+  test.each`
+  param         | expected    | description
+  ${42}         | ${42}       | ${'simple test'}
+  ${-2}         | ${2709}     | ${'negative number'}
+  ${27110042}   | ${42}       | ${'large numbers'}
+  ${-2711001}   | ${2710}     | ${'large negative numbers'}
+`('should new Bavli($param).globalIndex equles $expected ($description)', ({ param, expected }) => {
     // Arrange
-    const bavli = new Bavli(-2);
+    const bavli = new Bavli(param);
     // Act
     const actual = bavli.globalIndex;
     // Assert
-    expect(actual).toBe(2709);
-  });
-
-  test('should works with large numbers', () => {
-    // Arrange
-    const bavli = new Bavli(27110042);
-    // Act
-    const actual = bavli.globalIndex;
-    // Assert
-    expect(actual).toBe(42);
-  });
-
-  test('should works with large negative numbers', () => {
-    // Arrange
-    const bavli = new Bavli(-2711001);
-    // Act
-    const actual = bavli.globalIndex;
-    // Assert
-    expect(actual).toBe(2710);
+    expect(actual).toBe(expected);
   });
 });
 
 describe('masekhet property', () => {
-  test('should works 1', () => {
+  test.each`
+  param   | expected    | description
+  ${0}    | ${0}        | ${'simple test'}
+  ${100}  | ${1}        | ${'simple test'}
+  ${300}  | ${2}        | ${'simple test'}
+  ${-1}   | ${39}       | ${'the last page'}
+  ${62}   | ${0}        | ${'last "Berakhot" page'}
+  ${63}   | ${1}        | ${'first "Shabbat" page'}
+`('should new Bavli($param).masekhet equles $expected ($description)', ({ param, expected }) => {
     // Arrange
-    const bavli = new Bavli(0);
+    const bavli = new Bavli(param);
     // Act
     const actual = bavli.masekhet;
     // Assert
-    expect(actual).toBe(0);
-  });
-
-  test('should works 1.333', () => {
-    // Arrange
-    const bavli = new Bavli(62);
-    // Act
-    const actual = bavli.masekhet;
-    // Assert
-    expect(actual).toBe(0);
-  });
-
-  test('should works 1.666', () => {
-    // Arrange
-    const bavli = new Bavli(63);
-    // Act
-    const actual = bavli.masekhet;
-    // Assert
-    expect(actual).toBe(1);
-  });
-
-  test('should works 2', () => {
-    // Arrange
-    const bavli = new Bavli(100);
-    // Act
-    const actual = bavli.masekhet;
-    // Assert
-    expect(actual).toBe(1);
-  });
-
-  test('should works 3', () => {
-    // Arrange
-    const bavli = new Bavli(300);
-    // Act
-    const actual = bavli.masekhet;
-    // Assert
-    expect(actual).toBe(2);
-  });
-
-  test('should works 4', () => {
-    // Arrange
-    const bavli = new Bavli(-1);
-    // Act
-    const actual = bavli.masekhet;
-    // Assert
-    expect(actual).toBe(39);
+    expect(actual).toBe(expected);
   });
 });
 
 describe('pageIndex property', () => {
-  test('should works 1', () => {
+  test.each`
+  param   | expected    | description
+  ${0}    | ${0}        | ${'simple test'}
+  ${100}  | ${37}       | ${'simple test'}
+  ${62}   | ${62}       | ${'last "Berakhot" page'}
+  ${63}   | ${0}        | ${'first "Shabbat" page'}
+  ${-1}   | ${71}       | ${'the last page'}
+`('should new Bavli($param).pageIndex equles $expected ($description)', ({ param, expected }) => {
     // Arrange
-    const bavli = new Bavli(0);
+    const bavli = new Bavli(param);
     // Act
     const actual = bavli.pageIndex;
     // Assert
-    expect(actual).toBe(0);
-  });
-
-  test('should works 2', () => {
-    // Arrange
-    const bavli = new Bavli(62);
-    // Act
-    const actual = bavli.pageIndex;
-    // Assert
-    expect(actual).toBe(62);
-  });
-
-  test('should works 3', () => {
-    // Arrange
-    const bavli = new Bavli(63);
-    // Act
-    const actual = bavli.pageIndex;
-    // Assert
-    expect(actual).toBe(0);
-  });
-
-  test('should works 4', () => {
-    // Arrange
-    const bavli = new Bavli(-1);
-    // Act
-    const actual = bavli.pageIndex;
-    // Assert
-    expect(actual).toBe(71);
+    expect(actual).toBe(expected);
   });
 });
 
 describe('pageNumber property', () => {
-  test('should works 1', () => {
+  test.each`
+  param   | expected    | description
+  ${0}    | ${2}        | ${'simple test'}
+  ${62}   | ${64}       | ${'last "Berakhot" page'}
+  ${63}   | ${2}        | ${'first "Shabbat" page'}
+  ${-1}   | ${73}       | ${'the last page'}
+  ${2634} | ${34}       | ${'first "Middot" page'}
+  ${2638} | ${37}       | ${'last "Middot" page'}
+`('should new Bavli($param).pageNumber equles $expected ($description)', ({ param, expected }) => {
     // Arrange
-    const bavli = new Bavli(0);
+    const bavli = new Bavli(param);
     // Act
     const actual = bavli.pageNumber;
     // Assert
-    expect(actual).toBe(2);
-  });
-
-  test('should works 2', () => {
-    // Arrange
-    const bavli = new Bavli(62);
-    // Act
-    const actual = bavli.pageNumber;
-    // Assert
-    expect(actual).toBe(64);
-  });
-
-  test('should works 3', () => {
-    // Arrange
-    const bavli = new Bavli(63);
-    // Act
-    const actual = bavli.pageNumber;
-    // Assert
-    expect(actual).toBe(2);
-  });
-
-  test('should works 4', () => {
-    // Arrange
-    const bavli = new Bavli(-1);
-    // Act
-    const actual = bavli.pageNumber;
-    // Assert
-    expect(actual).toBe(73);
-  });
-
-  test('should works 5', () => {
-    // Arrange
-    const bavli = new Bavli(2638);
-    // Act
-    const actual = bavli.pageNumber;
-    // Assert
-    expect(actual).toBe(36);
-  });
-
-  test('should works 6', () => {
-    // Arrange
-    const bavli = new Bavli(2639);
-    // Act
-    const actual = bavli.pageNumber;
-    // Assert
-    expect(actual).toBe(2);
+    expect(actual).toBe(expected);
   });
 });
